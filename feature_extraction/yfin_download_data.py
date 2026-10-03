@@ -11,54 +11,65 @@ BTC as cryptocurrency.
 Check these for yfinance API.
 https://pythonfintech.com/articles/how-to-download-market-data-yfinance-python/
 https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html
+
+Notes:
+Brent has continuous front-month contract: roll jumps, volume mixes contracts. Or so Gemini says. So no volume.
 """
 
 ASSETS = {
     "BOC": {
         "ticker": "601988.SS",
         "name": "Bank of China (Shanghai Exchange)",
-        "asset_class": "stock"
+        "asset_class": "stock",
+        "volume": True
     },
     "NVDA": {
         "ticker": "NVDA",
         "name": "NVIDIA",
-        "asset_class": "stock"
+        "asset_class": "stock",
+        "volume": True
     },
     "SPY": {
         "ticker": "SPY",
         "name": "S&P 500 ETF",
-        "asset_class": "etf"
+        "asset_class": "etf",
+        "volume": True
     },
     "XLE": {
         "ticker": "XLE",
         "name": "Energy Select Sector SPDR ETF",
-        "asset_class": "etf"
+        "asset_class": "etf",
+        "volume": True
     },
     "EURUSD": {
         "ticker": "EURUSD=X",
         "name": "EUR/USD",
-        "asset_class": "forex"
+        "asset_class": "forex",
+        "volume": False
     },
     "EURTRY": {
         "ticker": "EURTRY=X",
         "name": "EUR/TRY",
-        "asset_class": "forex"
+        "asset_class": "forex",
+        "volume": False
     },
     "BRENT": {
         "ticker": "BZ=F",
         "name": "Brent crude oil futures (continuous)",
         "asset_class": "commodity",
-        "notes": "Continuous front-month contract: roll jumps, volume mixes contracts."
+        "volume": False
     },
     "TLT": {
         "ticker": "TLT",
         "name": "iShares 20+ Year Treasury Bond ETF",
-        "asset_class": "bond"
+        "asset_class": "bond",
+        "volume": True
     },
     "BTC": {
         "ticker": "BTC-USD",
         "name": "Bitcoin",
-        "asset_class": "crypto"
+        "asset_class": "crypto",
+        "volume": True
     }
 }
 
@@ -73,4 +84,4 @@ if __name__ == "__main__":
         if df.empty:
             print(f"No data for: {name}. Going through with the rest.")
             continue
-        df.to_csv(f"{name}.csv")
+        df.to_csv(f"data/{name}.csv")
