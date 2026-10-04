@@ -46,7 +46,7 @@ def build_indicators(df, use_vol):
     macd, _, _ = ta.MACD(c)
     feature_table["macd"] = macd/c
 
-    feature_table["aaron"] = ta.AROONOSC(h, l)
+    feature_table["aroon"] = ta.AROONOSC(h, l)
     feature_table["rsi"] = ta.RSI(c)
 
     upper, middle, lower = ta.BBANDS(c)
