@@ -84,4 +84,4 @@ if __name__ == "__main__":
         if df.empty:
             print(f"No data for: {name}. Going through with the rest.")
             continue
-        df.to_csv(f"data/{name}.csv")
+        df.to_csv(f"data/raw/{name}_big5.csv")
